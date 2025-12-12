@@ -1,234 +1,546 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Universe Code</title>
-  <meta name="description" content="Hub de Cleyton D. Macedo: acadêmico de Engenharia de Software e Física. Criador de Cosmos, Nexus, Infinity e literaturas cósmicas." />
-  <meta name="keywords" content="Universe Code, Cosmos, Engenharia de Software, Física, Literatura Científica">
+  <title>Universe Code — O Código que Aprende a Sentir</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
   <style>
+    /* === HERDAÇÃO DO DESIGN SYSTEM COSMOS === */
     :root {
-      --bg: #0b0b16;
-      --fg: #e6e6ff;
-      --accent: #7e57c2;
-      --glow: rgba(126, 87, 194, 0.25);
-      --card-bg: #161628;
-      --code: #64b5f6;
-      --subtle: #666699;
-      --literature: #ff9e6d;
+      /* --- Cores Base --- */
+      --bg-app: #000000;
+      --bg-panel: rgba(15, 15, 15, 0.85);
+      --bg-card: #111111;
+
+      /* --- Bordas --- */
+      --border-subtle: 1px solid rgba(255, 255, 255, 0.08);
+      --border-active: 1px solid rgba(255, 255, 255, 0.2);
+
+      /* --- Texto --- */
+      --text-primary: #ededed;
+      --text-secondary: #999999;
+      --text-muted: #555555;
+
+      /* --- Accents --- */
+      --accent-blue: #2997ff;
+      --accent-neon-blue: #1a7aff;
+      --accent-orange: #ff7b00;
+      --accent-green: #00c853;
+      --accent-nexus: #00e676;
+      --accent-infinity: #c62828;
+      --accent-literatura: #ffffff;
+
+      /* --- Layout --- */
+      --topbar-height: 56px;
+      --radius-md: 12px;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      outline: none;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--fg);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 60%);
     }
 
-    a {
-      color: var(--accent);
+    /* --- Scrollbar Estilizada --- */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.15) rgba(0, 0, 0, 0.3);
+    }
+
+    /* --- Top Nav --- */
+    #top-nav {
+      height: var(--topbar-height);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: var(--border-subtle);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      flex-shrink: 0;
+      gap: 4px;
+      z-index: 50;
+      overflow-x: auto;
+    }
+    #top-nav::-webkit-scrollbar { height: 0; }
+
+    .nav-tab {
+      padding: 6px 12px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
       text-decoration: none;
-      transition: opacity 0.2s;
     }
-    a:hover {
-      opacity: 0.9;
+    .nav-tab:hover { background-color: rgba(255,255,255,0.05); color: var(--text-primary); }
+    .nav-tab.active { background-color: rgba(255,255,255,0.1); color: var(--text-primary); border: var(--border-subtle); }
+
+    .home-btn {
+      font-weight: 700;
+      font-size: 14px;
+      margin-right: 16px;
+      padding-left: 0;
+      color: var(--accent-neon-blue) !important;
+      background: transparent !important;
+    }
+    .home-btn:hover { background: transparent !important; filter: brightness(1.2); }
+    .home-btn.active { background: transparent !important; border: none; }
+
+    /* --- Content --- */
+    #content-area {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 40px 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: calc(100vh - var(--topbar-height));
     }
 
-    header {
-      padding: 4.5rem 2rem 2.5rem;
+    .page-header {
       text-align: center;
-      max-width: 820px;
-      margin: 0 auto;
+      margin-bottom: 40px;
+      max-width: 800px;
     }
 
-    .logo {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    .page-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 12px;
       letter-spacing: -1px;
-      background: linear-gradient(90deg, var(--code), var(--literature));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      font-size: 1.25rem;
-      color: var(--subtle);
-      margin-bottom: 2rem;
-      font-style: italic;
+      color: var(--accent-neon-blue);
     }
 
     .identity {
-      background: rgba(30, 30, 50, 0.6);
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 2.5rem;
-      border-left: 2px solid var(--code);
-    }
-
-    .suites-grid, .literature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      padding: 0 2rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      padding: 12px 20px;
+      border-radius: 10px;
+      border-left: 3px solid var(--accent-neon-blue);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      color: var(--text-secondary);
     }
 
     .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 40px 0 24px;
+      color: var(--text-primary);
       text-align: center;
-      margin: 3.5rem 0 1.8rem;
-      color: var(--code);
-      font-size: 1.4rem;
+      width: 100%;
     }
 
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 1.6rem;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid transparent;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px var(--glow);
-      border-color: var(--accent);
-    }
-
-    .project-card.literature {
-      border-color: var(--literature);
-    }
-    .project-card.literature:hover {
-      box-shadow: 0 8px 24px rgba(255, 158, 109, 0.2);
-    }
-
-    .project-card h3 {
+    /* --- Cards Grid (Centralizado) --- */
+    .cards-grid {
       display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      max-width: 1400px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .universe-card {
+      background-color: var(--bg-card);
+      border: var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.9rem;
-      font-size: 1.25rem;
+      text-align: center;
+      height: 200px;
+      position: relative;
+      justify-content: center;
+      width: 340px;
     }
 
-    .project-card p {
-      color: var(--subtle);
-      font-size: 0.95rem;
-      line-height: 1.6;
+    .universe-card:hover {
+      transform: translateY(-6px);
+      background-color: #161616;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      border-color: rgba(255,255,255,0.2);
     }
 
-    .binary-stream {
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    /* TAGs de Status */
+    .status-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-tag.planejamento { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+    .status-tag.desenvolvimento { background: rgba(255, 123, 0, 0.15); color: var(--accent-orange); }
+    .status-tag.pronto { background: rgba(0, 200, 83, 0.15); color: var(--accent-green); }
+
+    .card-number {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 10px;
+      color: #444;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    /* Modal */
+    #modal-overlay {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
-      z-index: -1;
-      opacity: 0.06;
-      background: 
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 22px,
-          var(--code) 22px,
-          var(--code) 23px
-        );
-      background-size: 100% 44px;
-      animation: drift 90s linear infinite;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
     }
 
-    @keyframes drift {
-      0% { transform: translateX(0) translateY(0); }
-      100% { transform: translateX(-12px) translateY(-2200px); }
-    }
-
-    footer {
+    #modal-content {
+      background: var(--bg-card);
+      border: var(--border-active);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      max-width: 500px;
+      width: 90%;
       text-align: center;
-      padding: 2.5rem 2rem 2rem;
-      color: var(--subtle);
-      font-size: 0.92rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     }
 
-    .signature {
-      margin-top: 1rem;
-      font-family: monospace;
-      color: var(--literature);
+    #modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent-neon-blue);
+    }
+
+    #modal-text {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    #modal-close {
+      background: var(--accent-neon-blue);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #modal-close:hover {
+      background: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 0 20px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: auto;
+      width: 100%;
     }
 
     @media (max-width: 600px) {
-      header {
-        padding-top: 3rem;
+      .page-header h1 { font-size: 1.8rem; }
+      .cards-grid {
+        padding: 0 10px;
       }
-      .logo {
-        font-size: 2.3rem;
-      }
-      .binary-stream {
-        opacity: 0.04;
-      }
+      .universe-card { width: 90%; height: auto; min-height: 180px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="binary-stream"></div>
+  <nav id="top-nav">
+    <div class="nav-tab home-btn active">🜂 Universe Code</div>
+    <div class="nav-tab" style="color: var(--accent-blue);" data-module="cosmos" data-url="./cosmos/">Cosmos</div>
+    <div class="nav-tab" style="color: var(--accent-nexus);" data-module="nexus" data-url="./nexus/">Nexus</div>
+    <div class="nav-tab" style="color: var(--accent-infinity);" data-module="infinity" data-url="">Infinity</div>
+    <div class="nav-tab" style="color: var(--accent-literatura);" data-module="literatura" data-url="./literature/">Literatura</div>
+  </nav>
 
-  <header>
-    <div class="logo">🜂 Universe Code</div>
-    <div class="subtitle">O Universo que Aprende a Sentir</div>
-    <div class="identity">
-      <strong>Cleyton D. Macedo</strong> — acadêmico de <em>Engenharia de Software</em> e <em>Física</em>.<br>
-      Pesquisador de origens cósmicas, escritor de poesia científica e arquiteto de suítes digitais.
+  <div id="content-area">
+    <div class="page-header">
+      <h1>Universe Code</h1>
+      <p>Aprendendo o Universo, um Bit de Consciência por Vez</p>
+      <div class="identity">
+        <strong>Cleyton D. Macedo</strong> — acadêmico de Engenharia de Software e Física.<br>
+        Criador das suítes <em>Cosmos</em>, <em>Nexus</em>, <em>Infinity</em> e autor de literaturas cósmicas.
+      </div>
     </div>
-  </header>
 
-  <h2 class="section-title">🛠️ Suítes Técnicas</h2>
-  <main class="suites-grid">
-    <a href="./cosmos/" class="project-card">
-      <h3>🌌 Cosmos</h3>
-      <p>Suíte integrada de edição, simulação e visualização. Absorveu o QuantumLab: editores WYSIWYG, simuladores nucleares, exportação multiplataforma e muito mais.</p>
-    </a>
+    <h2 class="section-title">🛠️ Suítes Técnicas</h2>
+    <div class="cards-grid">
+      <div class="universe-card" data-status="desenvolvimento" data-url="./cosmos/">
+        <div class="card-number">01</div>
+        <div class="card-icon" style="color: var(--accent-blue)">🌌</div>
+        <div class="card-title">Cosmos</div>
+        <div class="card-desc">Editoração, simulação e visualização unificadas.</div>
+        <span class="status-tag pronto">PRONTO</span>
+      </div>
 
-    <a href="./nexus/" class="project-card">
-      <h3>🧮 Nexus</h3>
-      <p>Suíte matemática em construção: ferramentas para cálculo simbólico, álgebra, física computacional e visualização de campos vetoriais.</p>
-    </a>
+      <div class="universe-card" data-status="desenvolvimento" data-url="./nexus/">
+        <div class="card-number">02</div>
+        <div class="card-icon" style="color: var(--accent-nexus)">🧮</div>
+        <div class="card-title">Nexus</div>
+        <div class="card-desc">Matemática simbólica e física computacional.</div>
+        <span class="status-tag desenvolvimento">EM DESENVOLVIMENTO</span>
+      </div>
 
-    <a href="./infinity/" class="project-card">
-      <h3>📚 Infinity</h3>
-      <p>Repositório vivo do conhecimento: anotações, mapas mentais, resumos acadêmicos e reflexões interdisciplinares — acessíveis, organizadas e abertas.</p>
-    </a>
-  </main>
+      <div class="universe-card" data-status="planejamento" data-url="">
+        <div class="card-number">03</div>
+        <div class="card-icon" style="color: var(--accent-infinity)">📚</div>
+        <div class="card-title">Infinity</div>
+        <div class="card-desc">Repositório vivo do conhecimento.</div>
+        <span class="status-tag planejamento">PLANEJAMENTO</span>
+      </div>
+    </div>
 
-  <h2 class="section-title">✍️ Literaturas Cósmicas</h2>
-  <div class="literature-grid">
-    <a href="./jornada/" class="project-card literature">
-      <h3>🚀 A Grande Jornada do Cosmos</h3>
-      <p>Épica narrativa que percorre a evolução do universo, da inflação quântica à consciência emergente.</p>
-    </a>
+    <h2 class="section-title">✍️ Literaturas Cósmicas</h2>
+    <div class="cards-grid">
+      <div class="universe-card" data-status="desenvolvimento" data-url="./literature/jornada/">
+        <div class="card-number">04</div>
+        <div class="card-icon" style="color: var(--accent-literatura)">🚀</div>
+        <div class="card-title">A Grande Jornada do Cosmos</div>
+        <div class="card-desc">Épica narrativa que percorre a evolução do universo, da inflação quântica à consciência emergente.</div>
+        <span class="status-tag pronto">PRONTO</span>
+      </div>
 
-    <a href="./bigbang-fim/" class="project-card literature">
-      <h3>⏳ Do Big Bang ao Fim do Universo</h3>
-      <p>Exploração científica e poética dos ciclos cósmicos: nascimento, vida, entropia e possível renascimento.</p>
-    </a>
+      <div class="universe-card" data-status="planejamento" data-url="">
+        <div class="card-number">05</div>
+        <div class="card-icon" style="color: var(--accent-literatura)">⏳</div>
+        <div class="card-title">Do Big Bang ao Fim do Universo</div>
+        <div class="card-desc">Exploração científica e poética dos ciclos cósmicos: nascimento, vida, entropia e possível renascimento.</div>
+        <span class="status-tag planejamento">PLANEJAMENTO</span>
+      </div>
 
-    <a href="./potencial/" class="project-card literature">
-      <h3>✨ Potencial</h3>
-      <p>Onde física, espiritualidade e metafísica dialogam sobre o valor da vida no tecido do real.</p>
-    </a>
+      <div class="universe-card" data-status="desenvolvimento" data-url="./literature/potencial/">
+        <div class="card-number">06</div>
+        <div class="card-icon" style="color: var(--accent-literatura)">✨</div>
+        <div class="card-title">POTENCIAL</div>
+        <div class="card-desc">Onde física, espiritualidade e metafísica dialogam sobre o valor da vida no tecido do real.</div>
+        <span class="status-tag desenvolvimento">EM DESENVOLVIMENTO</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Inspirado por perguntas que precedem respostas — e por equações que sonham em ser versos.</p>
+      <p>Cleyton D. Macedo — © 2025</p>
+    </div>
   </div>
 
-  <footer>
-    <p>Inspirado por perguntas que precedem respostas — e por equações que sonham em ser versos.</p>
-    <div class="signature">Cleyton D. Macedo — © 2025</div>
-  </footer>
+  <!-- Modal -->
+  <div id="modal-overlay">
+    <div id="modal-content">
+      <h3 id="modal-title">Carregando...</h3>
+      <p id="modal-text">Por favor, aguarde.</p>
+      <button id="modal-close">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.universe-card');
+    const navTabs = document.querySelectorAll('.nav-tab:not(.home-btn)');
+    const modal = document.getElementById('modal-overlay');
+    const modalTitle = document.getElementById('modal-title');
+    const modalText = document.getElementById('modal-text');
+    const modalClose = document.getElementById('modal-close');
+
+    // Mapeamento de módulos para URLs
+    const moduleMap = {
+      'cosmos': './cosmos/',
+      'nexus': './nexus/',
+      'infinity': '',
+      'literatura': './literature/'
+    };
+
+    // Função para verificar status do módulo
+    function checkModuleStatus(moduleName) {
+      const moduleUrl = moduleMap[moduleName];
+      
+      // Procura o card pelo data-url
+      let moduleCard = null;
+      cards.forEach(card => {
+        if (card.dataset.url === moduleUrl) {
+          moduleCard = card;
+        }
+      });
+
+      if (moduleCard) {
+        const statusTag = moduleCard.querySelector('.status-tag');
+        if (statusTag) {
+          if (statusTag.classList.contains('pronto')) return 'pronto';
+          if (statusTag.classList.contains('desenvolvimento')) return 'desenvolvimento';
+          if (statusTag.classList.contains('planejamento')) return 'planejamento';
+        }
+      }
+      return 'desenvolvimento'; // padrão
+    }
+
+    // Lógica dos cards
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const statusTag = card.querySelector('.status-tag');
+        const url = card.dataset.url;
+        
+        let status = '';
+        if (statusTag.classList.contains('pronto')) {
+          status = 'pronto';
+        } else if (statusTag.classList.contains('desenvolvimento')) {
+          status = 'desenvolvimento';
+        } else if (statusTag.classList.contains('planejamento')) {
+          status = 'planejamento';
+        }
+
+        if (status === 'pronto') {
+          if (!url) {
+            alert('URL não configurada para este módulo.');
+            return;
+          }
+          modalTitle.textContent = 'Carregando módulo';
+          modalText.textContent = 'Por favor, aguarde...';
+          modal.style.display = 'flex';
+
+          setTimeout(() => {
+            window.location.href = url;
+          }, 1200);
+        }
+        else if (status === 'desenvolvimento') {
+          modalTitle.textContent = 'Em Desenvolvimento';
+          modalText.textContent = 'Este módulo está em fase ativa de desenvolvimento e será disponibilizado em breve.';
+          modal.style.display = 'flex';
+        }
+        else if (status === 'planejamento') {
+          modalTitle.textContent = 'Em Planejamento';
+          modalText.textContent = 'Este módulo ainda está em fase conceitual. A estrutura será definida em breve.';
+          modal.style.display = 'flex';
+        }
+      });
+    });
+
+    // Lógica dos botões da toolbar
+    navTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const moduleName = tab.dataset.module;
+        const url = tab.dataset.url;
+        const status = checkModuleStatus(moduleName);
+
+        if (status === 'pronto') {
+          if (!url) {
+            alert('URL não configurada para este módulo.');
+            return;
+          }
+          modalTitle.textContent = 'Carregando módulo';
+          modalText.textContent = 'Por favor, aguarde...';
+          modal.style.display = 'flex';
+
+          setTimeout(() => {
+            window.location.href = url;
+          }, 1200);
+        }
+        else if (status === 'desenvolvimento') {
+          modalTitle.textContent = 'Em Desenvolvimento';
+          modalText.textContent = 'Este módulo está em fase ativa de desenvolvimento e será disponibilizado em breve.';
+          modal.style.display = 'flex';
+        }
+        else if (status === 'planejamento') {
+          modalTitle.textContent = 'Em Planejamento';
+          modalText.textContent = 'Este módulo ainda está em fase conceitual. A estrutura será definida em breve.';
+          modal.style.display = 'flex';
+        }
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>
