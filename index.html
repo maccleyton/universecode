@@ -353,51 +353,59 @@
 
     <h2 class="section-title">🛠️ Suítes Técnicas</h2>
     <div class="cards-grid">
-      <div class="universe-card" data-status="desenvolvimento" data-url="./cosmos/">
+      <div class="universe-card" data-status="planejamento" data-url="./cosmos/">
         <div class="card-number">01</div>
         <div class="card-icon" style="color: var(--accent-blue)">🌌</div>
         <div class="card-title">Cosmos</div>
         <div class="card-desc">Editoração, simulação e visualização unificadas.</div>
-        <span class="status-tag desenvolvimento">EM DESENVOLVIMENTO</span>
+        <span class="status-tag desenvolvimento">PLANEJAMENTO</span>
       </div>
 
-      <div class="universe-card" data-status="desenvolvimento" data-url="./nexus/">
+      <div class="universe-card" data-status="planejamento" data-url="./nexus/">
         <div class="card-number">02</div>
         <div class="card-icon" style="color: var(--accent-nexus)">🧮</div>
         <div class="card-title">Nexus</div>
         <div class="card-desc">Matemática simbólica e física computacional.</div>
-        <span class="status-tag desenvolvimento">EM DESENVOLVIMENTO</span>
+        <span class="status-tag desenvolvimento">PLANEJAMENTO</span>
       </div>
 
-      <div class="universe-card" data-status="planejamento" data-url="">
+      <div class="universe-card" data-status="desenvolvimento" data-url="">
         <div class="card-number">03</div>
         <div class="card-icon" style="color: var(--accent-infinity)">📚</div>
         <div class="card-title">Infinity</div>
         <div class="card-desc">Repositório vivo do conhecimento.</div>
-        <span class="status-tag planejamento">PLANEJAMENTO</span>
+        <span class="status-tag planejamento">EM DESENVOLVIMENTO</span>
+      </div>
+
+      <div class="universe-card" data-status="pronto" data-url="https://literatura.universecode.work/">
+        <div class="card-number">04</div>
+        <div class="card-icon" style="color: var(--accent-literatura)">✍️</div>
+        <div class="card-title">Literatura</div>
+        <div class="card-desc">Narrativas cósmicas e ensaios sobre a realidade.</div>
+        <span class="status-tag desenvolvimento">PRONTO</span>
       </div>
     </div>
 
     <h2 class="section-title">✍️ Literaturas Cósmicas</h2>
     <div class="cards-grid">
       <div class="universe-card" data-status="desenvolvimento" data-url="./literature/jornada/">
-        <div class="card-number">04</div>
+        <div class="card-number">05</div>
         <div class="card-icon" style="color: var(--accent-literatura)">🚀</div>
         <div class="card-title">A Grande Jornada do Cosmos</div>
         <div class="card-desc">Épica narrativa que percorre a evolução do universo, da inflação quântica à consciência emergente.</div>
         <span class="status-tag desenvolvimento">EM DESENVOLVIMENTO</span>
       </div>
 
-      <div class="universe-card" data-status="planejamento" data-url="">
-        <div class="card-number">05</div>
+      <div class="universe-card" data-status="desenvolvimento" data-url="">
+        <div class="card-number">06</div>
         <div class="card-icon" style="color: var(--accent-literatura)">⏳</div>
         <div class="card-title">Do Big Bang ao Fim do Universo</div>
         <div class="card-desc">Exploração científica e poética dos ciclos cósmicos: nascimento, vida, entropia e possível renascimento.</div>
-        <span class="status-tag planejamento">PLANEJAMENTO</span>
+        <span class="status-tag planejamento">EM DESENVOLVIMENTO</span>
       </div>
 
       <div class="universe-card" data-status="desenvolvimento" data-url="./literature/potencial/">
-        <div class="card-number">06</div>
+        <div class="card-number">07</div>
         <div class="card-icon" style="color: var(--accent-literatura)">✨</div>
         <div class="card-title">POTENCIAL</div>
         <div class="card-desc">Onde física, espiritualidade e metafísica dialogam sobre o valor da vida no tecido do real.</div>
@@ -449,12 +457,9 @@
       });
 
       if (moduleCard) {
-        const statusTag = moduleCard.querySelector('.status-tag');
-        if (statusTag) {
-          if (statusTag.classList.contains('pronto')) return 'pronto';
-          if (statusTag.classList.contains('desenvolvimento')) return 'desenvolvimento';
-          if (statusTag.classList.contains('planejamento')) return 'planejamento';
-        }
+        // Agora verificamos diretamente o dataset do card
+        const status = moduleCard.dataset.status;
+        if (status) return status;
       }
       return 'desenvolvimento'; // padrão
     }
@@ -465,14 +470,10 @@
         const statusTag = card.querySelector('.status-tag');
         const url = card.dataset.url;
         
-        let status = '';
-        if (statusTag.classList.contains('pronto')) {
-          status = 'pronto';
-        } else if (statusTag.classList.contains('desenvolvimento')) {
-          status = 'desenvolvimento';
-        } else if (statusTag.classList.contains('planejamento')) {
-          status = 'planejamento';
-        }
+        if (!statusTag) return; // Segurança, embora não deva acontecer
+        
+        // Controle alterado para usar o data-status do card
+        const status = card.dataset.status || 'desenvolvimento';
 
         if (status === 'pronto') {
           if (!url) {
