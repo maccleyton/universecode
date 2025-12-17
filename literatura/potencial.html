@@ -388,47 +388,35 @@
             font-size: 19px;
             line-height: 1.8;
         }
-		/*
+
         .highlight-verse {
             text-align: center;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 300;
-            color: #fff;
-            margin: 50px 0;
+            color: #d1e0ff; /* tom suave */
+            margin: 70px 0;
             font-style: italic;
+            line-height: 1.8;
+            position: relative;
         }
-		*/
-		
 
-.highlight-verse {
-    text-align: center;
-    font-size: 26px;
-    font-weight: 300;
-    color: #d1e0ff; /* tom suave */
-    margin: 70px 0;
-    font-style: italic;
-    line-height: 1.8;
-    position: relative;
-}
+        .highlight-verse::before {
+            content: "“";
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            left: 10%;
+            top: -20px;
+        }
 
-.highlight-verse::before {
-    content: "“";
-    font-size: 80px;
-    color: rgba(255, 255, 255, 0.05);
-    position: absolute;
-    left: 10%;
-    top: -20px;
-}
-
-.highlight-verse::after {
-    content: "”";
-    font-size: 80px;
-    color: rgba(255, 255, 255, 0.05);
-    position: absolute;
-    right: 10%;
-    bottom: -20px;
-}
-
+        .highlight-verse::after {
+            content: "”";
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            right: 10%;
+            bottom: -20px;
+        }
 		
         /* Responsive */
         @media (max-width: 768px) {
@@ -458,7 +446,7 @@
                 </button>
             </div>
             <nav class="sidebar-content">
-                <a href="https://universecode.work/" class="toc-item" style="opacity:0.7">← Voltar ao Menu</a>
+                <a href="../index.html" class="toc-item" style="opacity:0.7">← Voltar ao Menu</a>
                 <a href="#prologo" class="toc-item">Prólogo: O Vazio Que Respira</a>
 
                 <a href="#cap1" class="toc-item">1. O Universo como Computador</a>
