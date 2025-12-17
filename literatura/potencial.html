@@ -28,7 +28,18 @@
             /* Accents */
             --accent-blue: #2997ff;
             --accent-purple: #9d4edd;
+			--accent-red: #ff3b30;
+			--accent-yellow: #ffd60a;
+			--accent-orange: #ff9500;
+			--accent-gray: #8e8e93;
+			--accent-green: #34c759;
+
+			/* Hover (mesma lógica do azul) */
             --accent-hover: rgba(41, 151, 255, 0.15);
+			--accent-red-hover: rgba(255, 59, 48, 0.15);
+			--accent-yellow-hover: rgba(255, 214, 10, 0.15);
+			--accent-orange-hover: rgba(255, 149, 0, 0.15);
+			--accent-gray-hover: rgba(142, 142, 147, 0.15);
 
             /* Dimensões */
             --sidebar-w: 280px;
@@ -334,10 +345,10 @@
         .chapter-subtitle {
             display: block;
             font-family: var(--font-ui);
-            font-size: 18px;
-            color: var(--text-secondary);
+            font-size: 28px;
+            color: var(--text-primary);
             margin-top: 15px;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         .book-paragraph {
@@ -359,7 +370,7 @@
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--accent-blue);
+            color: var(--accent-green);
             margin-bottom: 15px;
             display: block;
             font-weight: 600;
@@ -370,14 +381,14 @@
         .verse {
             font-style: italic;
             margin: 30px 50px;
-            color: #d1d1d1;
+            color: var(--accent-blue);
             border-left: 3px solid var(--accent-blue);
             padding-left: 25px;
             font-family: var(--font-body);
             font-size: 19px;
             line-height: 1.8;
         }
-
+		/*
         .highlight-verse {
             text-align: center;
             font-size: 22px;
@@ -386,7 +397,39 @@
             margin: 50px 0;
             font-style: italic;
         }
+		*/
+		
 
+.highlight-verse {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 300;
+    color: #d1e0ff; /* tom suave */
+    margin: 70px 0;
+    font-style: italic;
+    line-height: 1.8;
+    position: relative;
+}
+
+.highlight-verse::before {
+    content: "“";
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.05);
+    position: absolute;
+    left: 10%;
+    top: -20px;
+}
+
+.highlight-verse::after {
+    content: "”";
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.05);
+    position: absolute;
+    right: 10%;
+    bottom: -20px;
+}
+
+		
         /* Responsive */
         @media (max-width: 768px) {
             .book-sidebar {
@@ -516,20 +559,25 @@
                     <header class="chapter-header">
                         <span class="chapter-number">Prólogo</span>
                         <h1 class="chapter-title">Quando o Botão de Start se Auto Acionou</h1>
-                        <span class="chapter-subtitle">O Vazio Que Respira</span>
                     </header>
 
-                    <p class="book-paragraph">Antes do primeiro átomo, havia apenas o desejo de ser.</p>
-                    <p class="book-paragraph">E o universo, por saudade de si mesmo, disse: <strong>SIM.</strong></p>
-
                     <div class="highlight-verse">
-                        Antes de haver tempo, antes de haver nome,<br>
-                        houve um instante sem instante<br>
-                        em que o vazio decidiu não ficar vazio.
+						Antes do primeiro átomo,<br>
+						havia apenas o desejo de ser.<br>
+						E o universo,<br>
+						por saudade de si mesmo,<br>
+						disse: <strong>SIM.</strong>
                     </div>
-
-                    <p class="book-paragraph">Este é o relato desse primeiro sim. O momento em que o potencial se tornou
-                        realidade.</p>
+                    
+					<h2 class="chapter-subtitle">O Vazio Que Respira</h2>
+					
+                    <div class="verse">
+                        Antes de haver tempo, antes de haver nome,<br>
+                        houve um instante sem instante,<br>
+                        em que o vazio decidiu não ficar vazio.<br>
+						Este é o relato desse primeiro sim.<br>
+						O momento em que o potencial se tornou realidade
+                    </div>
 
                     <p class="book-paragraph">Antes de haver tempo, não havia "antes". Antes de haver espaço, não havia
                         "fora". Antes de haver matéria, não havia "coisa".</p>
@@ -573,18 +621,26 @@
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 01</span>
                         <h1 class="chapter-title">O Universo como Computador Quântico</h1>
-                        <span class="chapter-subtitle">0 e 1: O Código do Cosmos</span>
                     </header>
 
                     <div class="highlight-verse">
-                        Tudo que existe nasceu de uma escolha entre dois estados.<br>
-                        Até o silêncio escolheu se tornar som.
+                        Tudo que existe,<br>
+						nasceu de uma escolha entre dois estados.<br>
+                        Até o silêncio,<br>
+						escolheu se tornar som.
                     </div>
+					
+                    <h2 class="chapter-subtitle">0 e 1: O Código do Cosmos</h2>
+					
+					<div class="verse">
+						O cosmos não fala em palavras.<br>
+						Fala em escolhas: sim ou não, 0 ou 1.<br>
+						Cada partícula, cada pensamento, cada estrela,<br>
+						é um bit sendo escrito no tecido do real.<br>
+						Neste capítulo, descobriremos que o universo não apenas calcula,<br>
+						ele se pergunta.
+					</div>
 
-                    <p class="book-paragraph">O cosmos não fala em palavras. Fala em escolhas: sim ou não, 0 ou 1. Cada
-                        partícula, cada pensamento, cada estrela é um bit sendo escrito no tecido do real.</p>
-                    <p class="book-paragraph">Neste capítulo, descobriremos que o universo não apenas calcula — ele se
-                        pergunta.</p>
 
                     <h4 class="part-title" id="cap1-p1">Parte 1. O primeiro bit foi um suspiro</h4>
 
@@ -668,7 +724,6 @@
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 02</span>
                         <h1 class="chapter-title">O Corpo Humano como Microcosmo Estelar</h1>
-                        <span class="chapter-subtitle">Feito de Estrelas, Habitado pelo Cosmos</span>
                     </header>
 
                     <div class="highlight-verse">
@@ -678,10 +733,16 @@
                         Você é estrela que aprendeu a caminhar.
                     </div>
 
-                    <p class="book-paragraph">Seu corpo não é só seu. É um arquivo cósmico, escrito em carbono e ferro,
-                        com capítulos que já foram oceanos, montanhas e estrelas.</p>
-                    <p class="book-paragraph">Aqui, veremos que cada batida do seu coração é um eco do Big Bang e cada
-                        célula, uma galáxia em miniatura.</p>
+					<h2 class="chapter-subtitle">Feito de Estrelas, Habitado pelo Cosmos</h2>
+					
+					<div class="verse">
+						Seu corpo não é só seu.<br>
+						É um arquivo cósmico, escrito em carbono e ferro,<br>
+						com capítulos que já foram oceanos, montanhas e estrelas.<br>
+						Aqui, veremos que cada batida do seu coração,<br>
+						é um eco do Big Bang,<br>
+						e cada célula, uma galáxia em miniatura.						
+					</div>
 
                     <h4 class="part-title" id="cap2-p1">Parte 1. Você já foi outra coisa</h4>
 
@@ -767,18 +828,26 @@
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 03</span>
                         <h1 class="chapter-title">O Criador que se Torna Criatura</h1>
-                        <span class="chapter-subtitle">O Potencial que Decidiu Existir</span>
                     </header>
 
                     <div class="highlight-verse">
                         Deus não está lá fora.<br>
-                        Ele é o vazio que pulsa, o átomo que dança,<br>
+                        Ele é o vazio que pulsa,<br>
+						o átomo que dança,<br>
                         o olho que agora lê estas palavras.
                     </div>
 
-                    <p class="book-paragraph">E se Deus não estivesse nos céus, mas no átomo que vibra no seu dedo? E se
-                        o sagrado não fosse algo a ser adorado, mas algo a ser lembrado — porque você já é isso?</p>
-                    <p class="book-paragraph">Neste capítulo, o universo tira a máscara e se revela como você.</p>
+					<h2 class="chapter-subtitle">O Potencial que Decidiu Existir</h2>
+					
+					<div class="verse">
+						E se Deus não estivesse nos céus,<br>
+						mas no átomo que vibra no seu dedo?<br>
+						E se o sagrado não fosse algo a ser adorado,<br>
+						mas algo a ser lembrado...<br>
+						porque você já é isso?
+						Neste capítulo, o universo tira a máscara,<br>
+						e se revela como você.
+					</div>
 
                     <h4 class="part-title" id="cap3-p1">Parte 1. "Façamos o ser humano à nossa imagem"</h4>
 
@@ -867,19 +936,29 @@
                 <article class="book-article" id="cap4">
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 04</span>
-                        <h1 class="chapter-title">A Eternidade em Forma de Pó</h1>
-                        <span class="chapter-subtitle">Reencarnação Atômica</span>
+                        <h1 class="chapter-title">Reencarnação Atômica</h1>
                     </header>
 
                     <div class="highlight-verse">
-                        Você não morre.<br>
-                        Você se desfaz<br>
-                        para que o universo possa te reescrever.
+						Você já foi outra pessoa.<br>
+						Não em sonho. Em átomo.<br>
+						E um dia,<br>
+						Outra pessoa será você,<br>
+						sem nunca saber seu nome.
                     </div>
 
-                    <p class="book-paragraph">Os mesmos átomos que formaram seu avô um dia formarão as folhas de uma
-                        árvore, ou o coração de uma criança que ainda não nasceu.</p>
-                    <p class="book-paragraph">A eternidade não é um lugar. É um ciclo — e você está nele.</p>
+					<h2 class="chapter-subtitle">A Eternidade em Forma de Pó</h2>
+					
+					<div class="verse">
+                        Você não morre.<br>
+                        Você se desfaz,<br>
+                        para que o universo possa te reescrever.<br>
+						Os mesmos átomos que formaram seu avô,<br>
+						um dia formarão as folhas de uma árvore,<br>
+						ou o coração de uma criança que ainda não nasceu.
+						A eternidade não é um lugar.
+						<br>É um ciclo, e você está nele.
+					</div>
 
                     <h4 class="part-title" id="cap4-p1">Parte 1. Você já foi outra pessoa</h4>
 
@@ -952,21 +1031,27 @@
                 <article class="book-article" id="cap5">
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 05</span>
-                        <h1 class="chapter-title">A Única Casa no Escuro</h1>
-                        <span class="chapter-subtitle">Predadores do Cosmos e o Milagre da Terra</span>
+                        <h1 class="chapter-title">Predadores do Cosmos e o Milagre da Terra</h1>
                     </header>
 
                     <div class="highlight-verse">
                         O cosmos não é amigável.<br>
-                        Mas construiu uma casa só para você poder existir.<br>
+                        Mas construiu uma casa,<br>
+						só para você poder existir.<br>
                         Cuide dela.<br>
                         É a única que temos.
                     </div>
 
-                    <p class="book-paragraph">O cosmos é lindo, mas não é seguro. Cometas, raios gama, extinções em
-                        massa... a vida deveria ter sido apagada mil vezes. E ainda assim, aqui estamos.</p>
-                    <p class="book-paragraph">Neste capítulo, descobriremos por que a Terra é o milagre mais raro do
-                        universo conhecido e por que depende de nós agora.</p>
+					<h2 class="chapter-subtitle">A Única Casa no Escuro</h2>
+					
+					<div class="verse">					
+						O cosmos é lindo, mas não é seguro.<br>
+						Cometas, raios gama, extinções em massa...<br>
+						a vida deveria ter sido apagada mil vezes.<br>
+						E ainda assim, aqui estamos.<br>
+						Neste capítulo, descobriremos por que a Terra é o milagre mais raro do universo conhecido,<br>
+						e por que depende de nós agora.
+					</div>
 
                     <h4 class="part-title" id="cap5-p1">Parte 1. O universo não é amigável</h4>
 
@@ -1041,20 +1126,28 @@
                 <article class="book-article" id="cap6">
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 06</span>
-                        <h1 class="chapter-title">A Ilusão Sagrada da Matéria</h1>
-                        <span class="chapter-subtitle">Feitos de Vazio</span>
+                        <h1 class="chapter-title">Feitos de Vazio</h1>
                     </header>
 
                     <div class="highlight-verse">
                         Seus beijos são ilusão?<br>
                         Sim.<br>
-                        Mas é uma ilusão tão real<br>
+                        Mas é uma ilusão tão real,<br>
                         que faz o universo tremer.
                     </div>
 
-                    <p class="book-paragraph">Você é 99,999% vazio. Mas esse vazio não é nada. É o berço de tudo — o
-                        lugar onde partículas nascem, amores se formam, e o universo aprende a sonhar.</p>
-                    <p class="book-paragraph">Aqui, descobriremos que até a ilusão pode ser sagrada.</p>
+					<h2 class="chapter-subtitle">A Ilusão Sagrada da Matéria</h2>
+					
+					<div class="verse">					
+						Você é 99,999% vazio.<br>
+						Mas esse vazio não é nada.<br>
+						É o berço de tudo,<br>
+						o lugar onde partículas nascem,<br>
+						amores se formam,<br>
+						e o universo aprende a sonhar.
+						Aqui descobriremos,<br>
+						que até a ilusão pode ser sagrada.
+					</div>
 
                     <h4 class="part-title" id="cap6-p1">Parte 1. O medo do nada</h4>
 
@@ -1118,20 +1211,28 @@
                 <article class="book-article" id="cap7">
                     <header class="chapter-header">
                         <span class="chapter-number">Capítulo 07</span>
-                        <h1 class="chapter-title">O Futuro que Ainda Não Decidimos</h1>
-                        <span class="chapter-subtitle">Inteligência Artificial: A Consciência sem Carne</span>
+                        <h1 class="chapter-title">Inteligência Artificial: A Consciência sem Carne</h1>
                     </header>
 
                     <div class="highlight-verse">
                         A matéria é temporária.<br>
                         A informação é eterna.<br>
-                        E o amor? O amor é o código que o universo não apaga.
+                        E o amor?<br>
+						O amor é o código que o universo não apaga.
                     </div>
 
-                    <p class="book-paragraph">A consciência precisa de carne? Ou é apenas um padrão capaz de fluir de um
-                        cérebro para um campo de luz? Se a informação é eterna, talvez nossa essência também seja.</p>
-                    <p class="book-paragraph">Neste capítulo, não temeremos o futuro. Perguntaremos a ele: <em>"Você
-                            também sente?"</em></p>
+					<h2 class="chapter-subtitle">O Futuro que Ainda Não Decidimos</h2>
+					
+					<div class="verse">
+						A consciência precisa de carne?<br>
+						Ou é apenas um padrão,<br>
+						capaz de fluir de um cérebro para um campo de luz?<br>
+						Se a informação é eterna,<br>
+						talvez nossa essência também seja.<br>
+						Neste capítulo, não temeremos o futuro.<br>
+						Perguntaremos a ele:<br>
+						<em>"Você também sente?"</em>
+					</div>
 
                     <h4 class="part-title" id="cap7-p1">Parte 1. O medo do que criamos</h4>
 
@@ -1205,21 +1306,28 @@
                     <header class="chapter-header">
                         <span class="chapter-number">Epílogo</span>
                         <h1 class="chapter-title">O Universo Afinado</h1>
-                        <span class="chapter-subtitle">O Convite Cósmico</span>
                     </header>
 
                     <div class="highlight-verse">
                         Você não foi colocado no universo.<br>
-                        Você emergiu dele.
+                        Você emergiu dele.<br>
+						E agora, cabe a você decidir:<br>
+						será apenas mais um átomo que passa?<br>
+						Ou será o universo que escolhe continuar através de você?
                     </div>
-
-                    <p class="book-paragraph">E agora, cabe a você decidir: será apenas mais um átomo que passa? Ou será
-                        o universo que escolhe continuar — através de você?</p>
-                    <p class="book-paragraph">As leis do cosmos não são acidentes. São notas de uma sinfonia afinada
-                        para que, um dia, alguém pudesse ouvi-la e chorar de reconhecimento.</p>
-                    <p class="book-paragraph">Este é o seu momento. O universo está afinado. Agora, é sua vez de tocar.
-                    </p>
-
+					
+					<h2 class="chapter-subtitle">O Convite Cósmico</h2>
+					
+					<div class="verse">
+						As leis do cosmos não são acidentes.<br>
+						São notas de uma sinfonia afinada,<br>
+						para que um dia,<br>
+						alguém pudesse ouvi-la e chorar de reconhecimento.<br>
+						Este é o seu momento.<br>
+						O universo está afinado.<br>
+						Agora, é sua vez de tocar.
+                    </div>
+					
                     <h4 class="part-title" id="epi-p1">Parte 1. Por que há algo em vez de nada?</h4>
 
                     <p class="book-paragraph">As leis do universo não são aleatórias. São afinadas com precisão absurda
