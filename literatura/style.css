@@ -203,6 +203,12 @@ body {
 	color: var(--text-muted);
 }
 
+.toc-sectionlink {
+	padding-left: 50px;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
 /* Main Area */
 .book-main {
 	flex: 1;
@@ -325,6 +331,15 @@ body {
 	font-weight: 600;
 }
 
+/* =========================================================================
+	Hierarquia: 
+	.chapter-title    = Título da Parte --- Nível 1 ---
+	.chapter-subtitle = Título do Capítulo --- Nível 2 ---
+	.chapter-sub      = Subtítulo poético do Capítulo
+	.chapter-section  = Título da Seção dentro do Capítulo --- Nível 3 ---
+   =========================================================================
+*/
+
 .chapter-title {
 	font-family: var(--font-body);
 	font-size: 38px;
@@ -349,6 +364,62 @@ body {
 	color: var(--text-primary);
 	margin-top: 15px;
 	font-weight: 500;
+}
+
+.chapter-section {
+  /* Tipografia: menor que h2.chapter-subtitle, maior que corpo */
+  font-family: var(--font-ui);
+  font-size: 22px;             /* entre 18 (sub) e 28 (subtitle) */
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-primary);
+
+  /* Espaçamento: respiro antes/depois */
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  /* Destaque sutil com barra à esquerda (afinando a identidade do capítulo) */
+  position: relative;
+  padding-left: 14px;
+}
+
+.chapter-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  height: 1.1em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-hover); /* halo leve, igual a UL */
+}
+
+/* Subtítulo opcional dentro de uma seção (linha de apoio) */
+.chapter-section + .section-sublead {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-top: -6px;       /* aproxima do h3 */
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+/* Âncoras: compensar a toolbar no scroll para que o h3 não fique escondido */
+:target.chapter-section {
+  scroll-margin-top: calc(var(--toolbar-h) + 20px); /* toolbar + respiro */
+}
+
+/* Links internos que apontam para seções (aplique na sidebar ou no texto) */
+a.section-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.18);
+}
+a.section-link:hover {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
 }
 
 .book-paragraph {
@@ -391,7 +462,7 @@ body {
 
 .highlight-verse {
 	text-align: center;
-	font-size: 26px;
+	font-size: 20px;
 	font-weight: 300;
 	color: #d1e0ff; /* tom suave */
 	margin: 70px 0;
@@ -448,6 +519,196 @@ body {
 	color: #e0d0f0;
 }
 
+/* ==========================
+   LISTAS (UL / OL) — Cosmos
+   ========================== */
+.book-article ul,
+.book-article ol {
+  margin: 22px 0 28px;
+  padding-left: 24px; /* Recuo semelhante ao parágrafo */
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Marcadores UL: ponto sutil com accent azul */
+.book-article ul li {
+  position: relative;
+  list-style: none; /* remove padrão */
+  margin: 8px 0;
+  color: #d1d1d1;
+}
+.book-article ul li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-hover); /* halo leve */
+  position: absolute;
+  left: -16px;
+  top: 12px;
+}
+
+/* OL com numeração clara e espaçamento */
+.book-article ol {
+  counter-reset: item;
+}
+.book-article ol > li {
+  counter-increment: item;
+  margin: 8px 0;
+  list-style: none;
+}
+.book-article ol > li::before {
+  content: counter(item) ".";
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-right: 8px;
+  display: inline-block;
+  width: 24px; /* largura fixa para alinhar a coluna de números */
+  text-align: right;
+}
+
+/* Sublistas: cor mais suave e recuo maior */
+.book-article ul ul,
+.book-article ol ol,
+.book-article ul ol,
+.book-article ol ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 24px;
+}
+.book-article ul ul li::before {
+  background: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(157, 78, 221, 0.12);
+}
+.book-article ol ol > li::before {
+  color: var(--accent-purple);
+}
+
+/* Itens com destaque (ex.: citações dentro de li) */
+.book-article li strong {
+  color: #fff;
+  font-weight: 700;
+}
+.book-article li em {
+  color: var(--text-secondary);
+}
+
+/* ==========================
+   TABELAS — Cosmos
+   ========================== */
+
+/* Wrapper com rolagem horizontal para mobile */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  background: var(--bg-card);
+  margin: 30px 0;
+}
+
+/* Tabela base */
+.book-article table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  min-width: 560px; /* evita quebrar demais em telas menores */
+}
+
+/* Cabeçalho */
+.book-article thead th {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  border-bottom: var(--border-subtle);
+  padding: 12px 14px;
+  position: sticky;
+  top: 0; /* ajuda quando a tabela tem muita altura */
+  z-index: 1;
+}
+
+/* Células */
+.book-article tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  color: #d1d1d1;
+  font-size: 14px;
+}
+
+/* Linhas alternadas (zebra discreta) */
+.book-article tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+.book-article tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.00);
+}
+
+/* Hover de linha com accent-azul suave */
+.book-article tbody tr:hover {
+  background: var(--accent-hover);
+}
+
+/* Colunas numéricas: alinhar à direita */
+.book-article td.num,
+.book-article th.num {
+  text-align: right;
+}
+
+/* Colunas com estados (ex.: positivo/negativo) */
+.book-article td.positive {
+  color: var(--accent-green);
+}
+.book-article td.negative {
+  color: var(--accent-red);
+}
+
+/* Colunas-chave: reforçar contraste */
+.book-article th.key {
+  color: var(--accent-blue);
+}
+.book-article td.key {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Rodapé da tabela (totais/observações) */
+.book-article tfoot td {
+  padding: 12px 14px;
+  border-top: var(--border-subtle);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  font-style: italic;
+}
+
+/* Responsivo: ajustar os tamanhos em telas menores */
+@media (max-width: 768px) {
+  .chapter-section {
+    font-size: 20px;
+    margin-top: 36px;
+  }
+  .chapter-section::before {
+    height: 1em;
+  }
+}
+
+/* Responsivo: compactar padding e tipografia */
+@media (max-width: 768px) {
+  .book-article table {
+    min-width: 100%; /* permite comprimir mais */
+  }
+  .book-article the  .book-article thead th,
+  .book-article tbody td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
 /* Responsive */
 @media (max-width: 768px) {
 	.book-sidebar {
@@ -463,3 +724,6 @@ body {
 		padding: 20px;
 	}
 }
+
+/* ---------------------------------------------------- */
+

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potencial - O Universo que Aprende a Sentir</title>
+    <title>Do Big Bang ao Fim do Universo - Uma Oda à Existência</title>
 	<link href="../style.css" rel="stylesheet" />
 </head>
 
@@ -20,6 +20,15 @@
             </div>
             <nav class="sidebar-content">
                 <a href="../../index.html" class="toc-item" style="opacity:0.7">← Voltar ao Menu</a>
+                <a href="#prologo" class="toc-item">Prólogo:<br>O Grande Teatro Da Realidade</a>
+                <a href="#apresentacao" class="toc-item">Apresentação:<br>Um Convite à Jornada Cósmica</a>
+                <a href="./parte01.html#parte01" class="toc-item">Parte I: Os Fundamentos do Universo</a>
+                <a href="./cap01.html#cap01" class="toc-item toc-sublink">Capítulo01:<br>As Bases da Realidade</a>
+                <a href="./cap01.html#cap01-s0" class="toc-item toc-sectionlink">Introdução:<br>As Bases da Realidade</a>
+                <a href="./cap01.html#cap01-s1" class="toc-item toc-sectionlink">Seção 1.1:<br>Conceitos Fundamentais</a>
+                <a href="./cap01.html#cap01-s2" class="toc-item toc-sectionlink">Seção 1.2:<br>A Linguagem da Natureza</a>
+                <a href="./cap01.html#cap01-s3" class="toc-item toc-sectionlink">Seção 1.3:<br>Escalas do Universo</a>
+                <a href="./cap01.html#cap01-s4" class="toc-item toc-sectionlink">Reflexões Finais:<br>Os Fundamentos da Existência</a>
 			</nav>
 		</aside>
 
@@ -92,38 +101,6 @@
             </div>
         </main>
     </div>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('collapsed');
-        }
-
-        // Highlight active TOC item based on scroll position
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.3
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    if (id) {
-                        const tocItems = document.querySelectorAll('.toc-item');
-                        tocItems.forEach(item => item.classList.remove('active'));
-                        const activeItem = document.querySelector(`.toc-item[href="#${id}"]`);
-                        if (activeItem) activeItem.classList.add('active');
-                    }
-                }
-            });
-        }, observerOptions);
-
-		// CORREÇÃO AQUI: 
-        // Agora observamos tanto os 'article' (Capítulos) quanto '.part-title' (Partes)
-        document.querySelectorAll('article, .part-title').forEach(section => {
-            observer.observe(section);
-        });
-    </script>	
+    <script src="../script.js"></script>	
 </body>
 </html>

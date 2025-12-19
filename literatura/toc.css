@@ -1,0 +1,84 @@
+
+/* =========================================
+   TOC — Itens e subníveis (N1/N2/N3)
+   ========================================= */
+
+/* Base compartilhada para todos os níveis do TOC */
+.toc-item,
+.toc-sectionlink,
+.toc-sectionlink--sub {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estados comuns: hover e active */
+.toc-item:hover,
+.toc-sectionlink:hover,
+.toc-sectionlink--sub:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.toc-item.active,
+.toc-sectionlink.active,
+.toc-sectionlink--sub.active {
+  background: var(--accent-hover);
+  color: var(--accent-blue);
+  border-left-color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* Nível 1 — Item principal (Parte/Capítulo) */
+.toc-item {
+  font-size: 13px;
+  color: var(--text-secondary);
+  /* padding-left padrão de 20px já vem da base */
+}
+
+/* Nível 2 — Seção (deve identar igual ao toc-sublink) */
+.toc-sectionlink {
+  padding-left: 35px;     /* mesmo recuo do seu .toc-sublink */
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Mantém compatibilidade com sua classe existente */
+.toc-sublink {
+  padding-left: 35px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Nível 3 — Sub-seção (sub-sub) */
+.toc-sectionlink--sub {
+  padding-left: 52px;     /* mais profundo que o nível 2 */
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* Variante opcional com pontinho antes do texto */
+.toc-sectionlink--sub.dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gray);
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  top: -1px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .toc-sectionlink { font-size: 11.5px; padding-left: 30px; }
+  .toc-sectionlink--sub { font-size: 11px; padding-left: 46px; }
+}
