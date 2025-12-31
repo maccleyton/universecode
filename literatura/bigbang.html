@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do Big Bang ao Fim do Universo - Uma Oda à Existência</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+	<link href="./bigbang.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Fixed Toolbar -->
+    <nav id="main-toolbar">
+        <a href="../index.html" class="nav-btn home-link" title="Voltar ao Início">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="bigbang/prologo.html" class="nav-btn">Prólogo</a>
+        <a href="bigbang/parte01.html" class="nav-btn">I</a>
+        <a href="bigbang/parte02.html" class="nav-btn">II</a>
+        <a href="bigbang/parte03.html" class="nav-btn">III</a>
+        <a href="bigbang/parte04.html" class="nav-btn">IV</a>
+        <a href="bigbang/parte05.html" class="nav-btn">V</a>
+        <a href="bigbang/parte06.html" class="nav-btn">VI</a>
+        <a href="bigbang/parte07.html" class="nav-btn">VII</a>
+        <a href="bigbang/parte08.html" class="nav-btn">VIII</a>
+        <a href="bigbang/parte09.html" class="nav-btn">IX</a>
+        <a href="bigbang/parte10.html" class="nav-btn">X</a>
+        <a href="bigbang/parte11.html" class="nav-btn">XI</a>
+        <a href="bigbang/encerramento.html" class="nav-btn">Fim</a>
+    </nav>
+
+    <div class="container">
+        <header class="book-cover">
+            <h1 class="main-title">Do Big Bang ao Fim do Universo</h1>
+            <span class="sub-title">Uma Oda à Existência</span>
+            <div class="author">Cleyton D. Macedo</div>
+        </header>
+
+        <nav id="book-nav">
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_00.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Introdução</span>
+                        <h2 class="part-title">Uma Jornada pela Realidade</h2>
+                        <div class="expand-icon">▼
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/prologo.html" class="chapter-card"
+                        style="background-image: url('assets/prologo.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Prólogo</span>
+                            <span class="chap-name">O Grande Teatro da Realidade</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/apresentacao.html" class="chapter-card"
+                        style="background-image: url('assets/apresentacao.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Apresentação</span>
+                            <span class="chap-name">Um Convite à Jornada Cósmica</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_01.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte I</span>
+                        <h2 class="part-title">Os Fundamentos do Universo</h2>
+                        <span class="part-subtitle">O Código Primevo</span>
+						<a href="bigbang/parte01.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_01.html" class="chapter-card"
+                        style="background-image: url('assets/cap_01.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 01</span>
+                            <span class="chap-name">As Bases da Realidade</span>
+                            <span class="chap-sub">Do Vazio ao Primeiro Sopro</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_02.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte II</span>
+                        <h2 class="part-title">O Nascimento do Tempo e Espaço</h2>
+                        <span class="part-subtitle">A Dança dos Deuses</span>
+						<a href="bigbang/parte02.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_02.html" class="chapter-card"
+                        style="background-image: url('assets/cap_02.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 02</span>
+                            <span class="chap-name">O Big Bang e a Era de Planck</span>
+                            <span class="chap-sub">O Instante em que o Tempo Despertou</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_03.html" class="chapter-card"
+                        style="background-image: url('assets/cap_03.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 03</span>
+                            <span class="chap-name">Era da Grande Unificação</span>
+                            <span class="chap-sub">Quando Tudo Era Um Só Fio</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_04.html" class="chapter-card"
+                        style="background-image: url('assets/cap_04.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 04</span>
+                            <span class="chap-name">Era Eletrofraca</span>
+                            <span class="chap-sub">O Abraço das Forças Invisíveis</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_05.html" class="chapter-card"
+                        style="background-image: url('assets/cap_05.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 05</span>
+                            <span class="chap-name">Era Hadrônica</span>
+                            <span class="chap-sub">O Nascimento da Matéria Tangível</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_06.html" class="chapter-card"
+                        style="background-image: url('assets/cap_06.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 06</span>
+                            <span class="chap-name">Era dos Léptons</span>
+                            <span class="chap-sub">O Sussurro dos Fantasmas Leves</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_07.html" class="chapter-card"
+                        style="background-image: url('assets/cap_07.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 07</span>
+                            <span class="chap-name">Nucleossíntese Primordial</span>
+                            <span class="chap-sub">As Primeiras Palavras do Átomo</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_08.html" class="chapter-card"
+                        style="background-image: url('assets/cap_08.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 08</span>
+                            <span class="chap-name">Era da Radiação</span>
+                            <span class="chap-sub">O Universo em Chamas Silenciosas</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_03.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte III</span>
+                        <h2 class="part-title">A Emergência da Complexidade</h2>
+                        <span class="part-subtitle">Quando o Caos se Torna Ordem</span>
+						<a href="bigbang/parte03.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_09.html" class="chapter-card"
+                        style="background-image: url('assets/cap_09.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 09</span>
+                            <span class="chap-name">Recombinação e Desacoplamento</span>
+                            <span class="chap-sub">O Primeiro Amanhecer Cósmico</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_10.html" class="chapter-card"
+                        style="background-image: url('assets/cap_10.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 10</span>
+                            <span class="chap-name">Idade das Trevas</span>
+                            <span class="chap-sub">O Silêncio Entre as Estrelas</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_11.html" class="chapter-card"
+                        style="background-image: url('assets/cap_11.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 11</span>
+                            <span class="chap-name">Primeiras Estrelas (Pop. III)</span>
+                            <span class="chap-sub">Fogueiras na Escuridão Primordial</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_12.html" class="chapter-card"
+                        style="background-image: url('assets/cap_12.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 12</span>
+                            <span class="chap-name">Primeiras Supernovas</span>
+                            <span class="chap-sub">Estrelas que Morreram para Criar</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_04.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte IV</span>
+                        <h2 class="part-title">A Complexificação Química</h2>
+                        <span class="part-subtitle">A Forja dos Elementos</span>
+						<a href="bigbang/parte04.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_13.html" class="chapter-card"
+                        style="background-image: url('assets/cap_13.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 13</span>
+                            <span class="chap-name">Segunda Geração Estelar</span>
+                            <span class="chap-sub">Luz com Memória de Cinzas</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_14.html" class="chapter-card"
+                        style="background-image: url('assets/cap_14.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 14</span>
+                            <span class="chap-name">Primeiras Galáxias e Quasares</span>
+                            <span class="chap-sub">Arquipélagos de Fogo no Vazio</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_15.html" class="chapter-card"
+                        style="background-image: url('assets/cap_15.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 15</span>
+                            <span class="chap-name">Evolução Química Cósmica</span>
+                            <span class="chap-sub">A Alquimia do Universo</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_05.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte V</span>
+                        <h2 class="part-title">Nascimento do Sistema Solar</h2>
+                        <span class="part-subtitle">O Berço da Vida</span>
+						<a href="bigbang/parte05.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_16.html" class="chapter-card"
+                        style="background-image: url('assets/cap_16.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 16</span>
+                            <span class="chap-name">Formação do Sistema Solar</span>
+                            <span class="chap-sub">Dança de Poeira e Gelo</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_17.html" class="chapter-card"
+                        style="background-image: url('assets/cap_17.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 17</span>
+                            <span class="chap-name">Terra Primitiva (Hadeano)</span>
+                            <span class="chap-sub">Um Mundo em Fúria e Fogo</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_06.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte VI</span>
+                        <h2 class="part-title">Origem e Evolução da Vida</h2>
+                        <span class="part-subtitle">O Despertar da Matéria</span>
+						<a href="bigbang/parte06.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_18.html" class="chapter-card"
+                        style="background-image: url('assets/cap_18.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 18</span>
+                            <span class="chap-name">Origem da Vida (Arqueano)</span>
+                            <span class="chap-sub">O Milagre nas Águas Quentes</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_19.html" class="chapter-card"
+                        style="background-image: url('assets/cap_19.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 19</span>
+                            <span class="chap-name">Primeiros Organismos</span>
+                            <span class="chap-sub">O Primeiro Sopro da Vida na Rocha</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_20.html" class="chapter-card"
+                        style="background-image: url('assets/cap_20.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 20</span>
+                            <span class="chap-name">Revolução do Oxigênio</span>
+                            <span class="chap-sub">O Veneno que Virou Ar</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_21.html" class="chapter-card"
+                        style="background-image: url('assets/cap_21.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 21</span>
+                            <span class="chap-name">Células Eucarióticas</span>
+                            <span class="chap-sub">O Encontro que Mudou Tudo</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_22.html" class="chapter-card"
+                        style="background-image: url('assets/cap_22.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 22</span>
+                            <span class="chap-name">Evolução Multicelular</span>
+                            <span class="chap-sub">Do Um ao Muitos</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_07.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte VII</span>
+                        <h2 class="part-title">Explosão da Complexidade Biológica</h2>
+                        <span class="part-subtitle">A Era dos Pensantes</span>
+						<a href="bigbang/parte07.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_23.html" class="chapter-card"
+                        style="background-image: url('assets/cap_23.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 23</span>
+                            <span class="chap-name">Explosão Cambriana</span>
+                            <span class="chap-sub">A Floresta de Olhos que Surgiu</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_24.html" class="chapter-card"
+                        style="background-image: url('assets/cap_24.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 24</span>
+                            <span class="chap-name">Conquista da Terra</span>
+                            <span class="chap-sub">Raízes e Asas na Terra Firme</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_25.html" class="chapter-card"
+                        style="background-image: url('assets/cap_25.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 25</span>
+                            <span class="chap-name">Florestas e Ecossistemas</span>
+                            <span class="chap-sub">O Tecido Vivo do Planeta</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_26.html" class="chapter-card"
+                        style="background-image: url('assets/cap_26.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 26</span>
+                            <span class="chap-name">Extinções em Massa</span>
+                            <span class="chap-sub">Cinzas e Renascimento</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_27.html" class="chapter-card"
+                        style="background-image: url('assets/cap_27.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 27</span>
+                            <span class="chap-name">Era dos Dinossauros</span>
+                            <span class="chap-sub">Gigantes Sob Céus Estranhos</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_28.html" class="chapter-card"
+                        style="background-image: url('assets/cap_28.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 28</span>
+                            <span class="chap-name">Evolução dos Mamíferos</span>
+                            <span class="chap-sub">Pequenos Sonhadores na Sombra</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_08.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte VIII</span>
+                        <h2 class="part-title">Evolução da Inteligência e Consciência</h2>
+                        <span class="part-subtitle">O Olhar que Observa o Cosmos</span>
+						<a href="bigbang/parte08.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_29.html" class="chapter-card"
+                        style="background-image: url('assets/cap_29.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 29</span>
+                            <span class="chap-name">Evolução do Cérebro</span>
+                            <span class="chap-sub">A Chama da Consciência</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_30.html" class="chapter-card"
+                        style="background-image: url('assets/cap_30.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 30</span>
+                            <span class="chap-name">Evolução Humana</span>
+                            <span class="chap-sub">Da Selva ao Espelho da Mente</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_31.html" class="chapter-card"
+                        style="background-image: url('assets/cap_31.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 31</span>
+                            <span class="chap-name">Tecnologia e Civilização</span>
+                            <span class="chap-sub">Ferramentas, Fogo e Futuro</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_09.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte IX</span>
+                        <h2 class="part-title">O Presente Cósmico e Biológico</h2>
+                        <span class="part-subtitle">O Momento Decisivo</span>
+						<a href="bigbang/parte09.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_32.html" class="chapter-card"
+                        style="background-image: url('assets/cap_32.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 32</span>
+                            <span class="chap-name">Terra no Antropoceno</span>
+                            <span class="chap-sub">Quando o Planeta Sentiu Nossas Mãos</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_33.html" class="chapter-card"
+                        style="background-image: url('assets/cap_33.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 33</span>
+                            <span class="chap-name">Fronteiras da Ciência Atual</span>
+                            <span class="chap-sub">Mapas do Desconhecido</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_10.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte X</span>
+                        <h2 class="part-title">Futuro da Vida e do Universo</h2>
+                        <span class="part-subtitle">O Destino Final</span>
+						<a href="bigbang/parte10.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_34.html" class="chapter-card"
+                        style="background-image: url('assets/cap_34.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 34</span>
+                            <span class="chap-name">Evolução Futura da Vida</span>
+                            <span class="chap-sub">Sementes de Futuros Possíveis</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_35.html" class="chapter-card"
+                        style="background-image: url('assets/cap_35.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 35</span>
+                            <span class="chap-name">Destino do Sistema Solar</span>
+                            <span class="chap-sub">O Último Pôr do Sol da Terra</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_36.html" class="chapter-card"
+                        style="background-image: url('assets/cap_36.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 36</span>
+                            <span class="chap-name">Era Estelar do Universo</span>
+                            <span class="chap-sub">O Canto das Estrelas</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_37.html" class="chapter-card"
+                        style="background-image: url('assets/cap_37.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 37</span>
+                            <span class="chap-name">Era Degenerada</span>
+                            <span class="chap-sub">O Crepúsculo dos Astros</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_38.html" class="chapter-card"
+                        style="background-image: url('assets/cap_38.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 38</span>
+                            <span class="chap-name">Era dos Buracos Negros</span>
+                            <span class="chap-sub">O Silêncio Absoluto</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_39.html" class="chapter-card"
+                        style="background-image: url('assets/cap_39.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 39</span>
+                            <span class="chap-name">Era das Partículas</span>
+                            <span class="chap-sub">O Último Sussurro do Cosmos</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/part_11.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Parte XI</span>
+                        <h2 class="part-title">Síntese e Reflexões</h2>
+                        <span class="part-subtitle">A Grande Unidade</span>
+						<a href="bigbang/parte11.html" class="read-part-btn" onclick="event.stopPropagation()">Ler Tópico</a>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/capitulo_40.html" class="chapter-card"
+                        style="background-image: url('assets/cap_40.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 40</span>
+                            <span class="chap-name">Padrões Universais de Evolução</span>
+                            <span class="chap-sub">Leis que Tecem o Caos</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_41.html" class="chapter-card"
+                        style="background-image: url('assets/cap_41.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 41</span>
+                            <span class="chap-name">Conectando as Escalas</span>
+                            <span class="chap-sub">Do Átomo à Galáxia, Um Só Fio</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_42.html" class="chapter-card"
+                        style="background-image: url('assets/cap_42.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 42</span>
+                            <span class="chap-name">Questões Profundas</span>
+                            <span class="chap-sub">Por Que Há Algo em Vez de Nada?</span>
+                        </div>
+                    </a>
+                    <a href="bigbang/capitulo_43.html" class="chapter-card"
+                        style="background-image: url('assets/cap_43.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Capítulo 43</span>
+                            <span class="chap-name">Conclusão</span>
+                            <span class="chap-sub">Um Universo que se Contempla</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-group" onclick="togglePart(this)">
+                <div class="part-card" style="background-image: url('assets/encerra_bg.jpeg');">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="part-label">Encerramento</span>
+                        <h2 class="part-title">A Última Palavra Do Cosmos</h2>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                </div>
+
+                <div class="chapters-container">
+                    <a href="bigbang/encerramento.html" class="chapter-card"
+                        style="background-image: url('assets/cap_99.jpeg');">
+                        <div class="chap-overlay"></div>
+                        <div class="chap-info">
+                            <span class="chap-num">Fim</span>
+                            <span class="chap-name">Encerramento</span>
+                            <span class="chap-sub">A Mensagem Final</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+    <script>
+        function togglePart(element) {
+            // Fecha outros abertos (para manter apenas um aberto por vez)
+            const allGroups = document.querySelectorAll('.section-group');
+            allGroups.forEach(group => {
+                if (group !== element) {
+                    group.classList.remove('active');
+                }
+            });
+
+            // Alterna o estado do card clicado
+            element.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

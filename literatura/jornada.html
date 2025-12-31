@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Grande Jornada do Cosmos - Timeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-app: #000000;
+            --bg-card: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #3a86ff; /* Azul Original */
+            --border-subtle: 1px solid rgba(255, 255, 255, 0.1);
+            --font-ui: 'Inter', sans-serif;
+            --font-body: 'Merriweather', serif;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            background: radial-gradient(circle at 50% 20%, #1a1a1a 0%, #000000 80%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: var(--font-ui);
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* SCROLLBAR - Big Bang Standard */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-app);
+            border-left: 1px solid var(--border-subtle);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 5px;
+            border: 2px solid var(--bg-app);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Header Style from Big Bang */
+        #main-toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 56px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 12px;
+            margin-right: 4px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn:hover {
+            color: var(--accent-color);
+            background: rgba(58, 134, 255, 0.1);
+            border: 1px solid rgba(58, 134, 255, 0.3);
+            box-shadow: 0 0 8px rgba(58, 134, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 20px 60px;
+        }
+
+		.book-cover {
+			text-align: center;
+			margin-bottom: 80px;
+			padding-bottom: 40px;
+			border-bottom: var(--border-subtle);
+		}
+
+		.main-title {
+			font-family: var(--font-ui);
+			font-size: 48px;
+			font-weight: 800;
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+			line-height: 1.1;
+			margin-bottom: 15px;
+		}
+
+		.sub-title {
+			font-family: var(--font-ui);
+			font-size: 24px;
+			font-weight: 300;
+			color: var(--text-secondary);
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			margin-bottom: 30px;
+			display: block;
+		}
+
+		.author {
+			font-family: var(--font-body);
+			font-size: 20px;
+			color: var(--accent-color);
+			font-style: italic;
+			margin-top: 20px;
+		}
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* Vertical Line */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Dots on the line */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #000;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(58, 134, 255, 0.5);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: left;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+
+        /* Chapter Card Style */
+        .chapter-card {
+            display: block;
+            text-decoration: none;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-num {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #fff;
+            font-family: var(--font-body);
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-sub {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: var(--font-ui);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 20px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 50px;
+                width: auto;
+            }
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="main-toolbar">
+        <a href="../index.html" class="nav-btn" title="Voltar ao Início">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="#group-0" class="nav-btn">1-10</a>
+<a href="#group-1" class="nav-btn">11-20</a>
+<a href="#group-2" class="nav-btn">21-30</a>
+<a href="#group-3" class="nav-btn">31-40</a>
+<a href="#group-4" class="nav-btn">41-Fim</a>
+
+    </nav>
+
+    <div class="container">
+        <header class="book-cover">
+            <h1 class="main-title">A Grande Jornada do Cosmos</h1>
+            <span class="sub-title">Do Big Bang à Consciência</span>
+            <div class="author">Cleyton D. Macedo</div>
+        </header>
+
+        <div class="timeline-container">
+            
+        <div class="timeline-item" id="group-0">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_01.html" class="chapter-card">
+                    <img src="jornada/cap_01.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 1</span>
+                        <div class="card-title">O Tecido do Universo</div>
+                        <div class="card-sub">Onde Tudo Começou</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_02.html" class="chapter-card">
+                    <img src="jornada/cap_02.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 2</span>
+                        <div class="card-title">O Instante Zero</div>
+                        <div class="card-sub">Quando o Tempo Nasceu</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_03.html" class="chapter-card">
+                    <img src="jornada/cap_03.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 3</span>
+                        <div class="card-title">A Grande Expansão</div>
+                        <div class="card-sub">Quando o Espaço Cresceu Mais que a Imaginação</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_04.html" class="chapter-card">
+                    <img src="jornada/cap_04.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 4</span>
+                        <div class="card-title">O Campo que Deu Massa</div>
+                        <div class="card-sub">Quando as Partículas Aprenderam a Existir</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_05.html" class="chapter-card">
+                    <img src="jornada/cap_05.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 5</span>
+                        <div class="card-title">O Confinamento</div>
+                        <div class="card-sub">Quando os Quarks se Tornaram Pedras Fundamentais</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_06.html" class="chapter-card">
+                    <img src="jornada/cap_06.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 6</span>
+                        <div class="card-title">O Adeus dos Fantasmas</div>
+                        <div class="card-sub">Quando os Neutrinos Partiram</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_07.html" class="chapter-card">
+                    <img src="jornada/cap_07.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 7</span>
+                        <div class="card-title">A Primeira Forja</div>
+                        <div class="card-sub">Quando o Universo se Tornou Alquimista</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_08.html" class="chapter-card">
+                    <img src="jornada/cap_08.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 8</span>
+                        <div class="card-title">A Sinfonia Cósmica</div>
+                        <div class="card-sub">Quando o Universo Tocou sua Música</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_09.html" class="chapter-card">
+                    <img src="jornada/cap_09.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 9</span>
+                        <div class="card-title">O Nascimento da Luz Livre</div>
+                        <div class="card-sub">Quando o Universo se Tornou Transparente</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_10.html" class="chapter-card">
+                    <img src="jornada/cap_10.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 10</span>
+                        <div class="card-title">A Idade das Trevas</div>
+                        <div class="card-sub">Quando o Universo Sonhou em Silêncio</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" id="group-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_11.html" class="chapter-card">
+                    <img src="jornada/cap_11.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 11</span>
+                        <div class="card-title">O Nascimento das Primeiras Estrelas</div>
+                        <div class="card-sub">Quando o Fogo Voltou ao Cosmos</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_12.html" class="chapter-card">
+                    <img src="jornada/cap_12.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 12</span>
+                        <div class="card-title">A Morte das Gigantes</div>
+                        <div class="card-sub">Quando a Explosão Criou a Vida</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_13.html" class="chapter-card">
+                    <img src="jornada/cap_13.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 13</span>
+                        <div class="card-title">A Segunda Geração</div>
+                        <div class="card-sub">Quando as Estrelas Aprenderam a Durar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_14.html" class="chapter-card">
+                    <img src="jornada/cap_14.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 14</span>
+                        <div class="card-title">O Nascimento das Galáxias</div>
+                        <div class="card-sub">Quando o Cosmos se Organizou</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_15.html" class="chapter-card">
+                    <img src="jornada/cap_15.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 15</span>
+                        <div class="card-title">A Química Cósmica</div>
+                        <div class="card-sub">Quando os Elementos Contaram sua História</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_16.html" class="chapter-card">
+                    <img src="jornada/cap_16.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 16</span>
+                        <div class="card-title">Formação do Sistema Solar</div>
+                        <div class="card-sub">Quando a Poeira Estelar se Tornou Lar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_17.html" class="chapter-card">
+                    <img src="jornada/cap_17.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 17</span>
+                        <div class="card-title">Terra Primitiva</div>
+                        <div class="card-sub">Quando o Inferno se Tornou Lar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_18.html" class="chapter-card">
+                    <img src="jornada/cap_18.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 18</span>
+                        <div class="card-title">Origem da Vida</div>
+                        <div class="card-sub">Quando a Química Aprendeu a Sonhar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_19.html" class="chapter-card">
+                    <img src="jornada/cap_19.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 19</span>
+                        <div class="card-title">Primeiros Organismos</div>
+                        <div class="card-sub">Quando a Vida Aprendeu a Viver</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_20.html" class="chapter-card">
+                    <img src="jornada/cap_20.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 20</span>
+                        <div class="card-title">Revolução do Oxigênio</div>
+                        <div class="card-sub">Quando o Veneno se Tornou Vida</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" id="group-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_21.html" class="chapter-card">
+                    <img src="jornada/cap_21.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 21</span>
+                        <div class="card-title">A Grande Travessia</div>
+                        <div class="card-sub">Quando a Vida Deixou as Águas</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_22.html" class="chapter-card">
+                    <img src="jornada/cap_22.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 22</span>
+                        <div class="card-title">A Grande Transição</div>
+                        <div class="card-sub">Quando as Células Aprenderam a Cooperar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_23.html" class="chapter-card">
+                    <img src="jornada/cap_23.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 23</span>
+                        <div class="card-title">Explosão Cambriana</div>
+                        <div class="card-sub">Quando o Mundo Aprendeu a Ter Forma</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_24.html" class="chapter-card">
+                    <img src="jornada/cap_24.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 24</span>
+                        <div class="card-title">Conquista da Terra</div>
+                        <div class="card-sub">Quando a Vida Aprendeu a Respirar o Ar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_25.html" class="chapter-card">
+                    <img src="jornada/cap_25.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 25</span>
+                        <div class="card-title">Florestas Devônicas</div>
+                        <div class="card-sub">Quando a Terra Aprendeu a Ter Altura</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_26.html" class="chapter-card">
+                    <img src="jornada/cap_26.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 26</span>
+                        <div class="card-title">A Grande Extinção Permiana</div>
+                        <div class="card-sub">Quando o Mundo Quase Morreu</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_27.html" class="chapter-card">
+                    <img src="jornada/cap_27.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 27</span>
+                        <div class="card-title">Era dos Dinossauros</div>
+                        <div class="card-sub">Quando o Mundo Aprendeu a Ter Gigantes</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_28.html" class="chapter-card">
+                    <img src="jornada/cap_28.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 28</span>
+                        <div class="card-title">Evolução dos Mamíferos</div>
+                        <div class="card-sub">Quando o Sangue Aprendeu a Queimar</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_29.html" class="chapter-card">
+                    <img src="jornada/cap_29.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 29</span>
+                        <div class="card-title">A Invenção da Mente</div>
+                        <div class="card-sub">Quando a Matéria Aprendeu a Sentir</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_30.html" class="chapter-card">
+                    <img src="jornada/cap_30.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 30</span>
+                        <div class="card-title">Evolução Humana</div>
+                        <div class="card-sub">Quando a Consciência Aprendeu a Contar Histórias</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" id="group-3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_31.html" class="chapter-card">
+                    <img src="jornada/cap_31.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 31</span>
+                        <div class="card-title">Tecnologia e Civilização</div>
+                        <div class="card-sub">A Invenção do Futuro</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_32.html" class="chapter-card">
+                    <img src="jornada/cap_32.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 32</span>
+                        <div class="card-title">Terra no Antropoceno</div>
+                        <div class="card-sub">Quando uma Espécie se Tornou Força Geológica</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_33.html" class="chapter-card">
+                    <img src="jornada/cap_33.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 33</span>
+                        <div class="card-title">Fronteiras da Ciência Atual</div>
+                        <div class="card-sub">Onde o Conhecimento Toca o Mistério</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_34.html" class="chapter-card">
+                    <img src="jornada/cap_34.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 34</span>
+                        <div class="card-title">Evolução Futura da Vida</div>
+                        <div class="card-sub">Quando a Evolução se Torna Consciente</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_35.html" class="chapter-card">
+                    <img src="jornada/cap_35.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 35</span>
+                        <div class="card-title">Destino do Sistema Solar</div>
+                        <div class="card-sub">Quando as Estrelas Envelhecem</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_36.html" class="chapter-card">
+                    <img src="jornada/cap_36.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 36</span>
+                        <div class="card-title">Era Estelar do Universo</div>
+                        <div class="card-sub">Quando as Estrelas Aprendem a Morrer</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_37.html" class="chapter-card">
+                    <img src="jornada/cap_37.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 37</span>
+                        <div class="card-title">Era Degenerada</div>
+                        <div class="card-sub">Quando a Matéria Aprendeu a Esquecer</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_38.html" class="chapter-card">
+                    <img src="jornada/cap_38.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 38</span>
+                        <div class="card-title">Era dos Buracos Negros</div>
+                        <div class="card-sub">Quando o Cosmos se Tornou Silêncio com Memória</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_39.html" class="chapter-card">
+                    <img src="jornada/cap_39.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 39</span>
+                        <div class="card-title">Era das Partículas</div>
+                        <div class="card-sub">Quando o Cosmos se Tornou Vácuo com Memória</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_40.html" class="chapter-card">
+                    <img src="jornada/cap_40.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 40</span>
+                        <div class="card-title">Síntese Final</div>
+                        <div class="card-sub">A Grande História Cósmica</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" id="group-4">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_41.html" class="chapter-card">
+                    <img src="jornada/cap_41.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 41</span>
+                        <div class="card-title">Conectando as Escalas</div>
+                        <div class="card-sub">Quando o Universo se Tornou Um</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/capitulo_42.html" class="chapter-card">
+                    <img src="jornada/cap_42.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Capítulo 42</span>
+                        <div class="card-title">Questões Profundas</div>
+                        <div class="card-sub">Quando o Conhecimento Toca o Mistério</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="timeline-item" >
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <a href="jornada/conclusao.html" class="chapter-card">
+                    <img src="jornada/cap_43.png" alt="Capa" class="card-img">
+                    <div class="card-info">
+                        <span class="card-num">Conclusão</span>
+                        <div class="card-title">A Dignidade Cósmica da Consciência Desperta</div>
+                        <div class="card-sub">O Encerramento</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+universecode/
+      |- apps/
+	  |    |- CosmosWorkspace/
+	  |    |    |- assets/
+	  |    |    |    |- assets.jpeg  
+	  |    |    |    |- icons.svg  	  
+	  |    |    |- modules/
+	  |    |    |    |- modulos.html  	  
+	  |    |    |- script.js
+	  |    |    |- style.css
+	  |	   |- Infinity/
+	  |    |    |- assets/
+	  |    |    |    |- assets.jpeg  
+	  |    |    |    |- icons.svg  	  
+	  |    |    |- modules/
+	  |    |    |    |- modulos.html  	  
+	  |    |    |- script.js
+	  |    |    |- style.css
+	  |	   |- Literatura/
+	  |    |    |- assets/
+	  |    |    |    |- assets.jpeg  
+	  |    |    |    |- icons.svg  	  
+	  |    |    |- modules/
+	  |    |    |    |- modulos.html  	  
+	  |    |    |- script.js
+	  |    |    |- style.css
+	  |	   |- Nexus/
+	  |    |    |- assets/
+	  |    |    |    |- assets.jpeg  
+	  |    |    |    |- icons.svg  	  
+	  |    |    |- modules/
+	  |    |    |    |- modulos.html  	  
+	  |    |    |- script.js
+	  |    |    |- style.css
+	  |- index/
+	  |    |- index.css
+	  |    |- index.js
+	  |- literatura/
+	  |    |- assets/
+	  |    |    |- assets.jpeg  
+	  |    |- bigbang/
+	  |    |    |- capítulos.html
+	  |    |- bigbang.html
+	  |    |- jornada.html
+	  |    |- potencial.html
+	  |    |- script.js
+	  |    |- style.css	  
